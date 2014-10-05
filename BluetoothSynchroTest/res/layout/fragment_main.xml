@@ -7,11 +7,26 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.bluetoothsynchrotest.MainActivity$PlaceholderFragment" >
-
+	
+    
     <TextView
         android:id="@+id/textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/hello_world" />
 
+    <Button 
+        android:id="@+id/buttonclient"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/buttonclient"
+        android:layout_below="@id/textview"/>
+    
+    <Button 
+        android:id="@+id/buttonserver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/buttonserver"
+		android:layout_below="@id/buttonclient"/>
+    
 </RelativeLayout>

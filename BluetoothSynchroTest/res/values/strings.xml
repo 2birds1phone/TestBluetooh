@@ -4,5 +4,7 @@
     <string name="app_name">Bluetooth Synchro Test</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="buttonclient">Client</string>
+    <string name="buttonserver">Server</string>
 
 </resources>

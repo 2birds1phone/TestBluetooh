@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.os.Build;
 import android.bluetooth.*;
+import android.content.*;
 
 import java.util.*;
 
@@ -36,6 +37,15 @@ public class MainActivity extends ActionBarActivity {
     	text.setText("Test");
     	
     	BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
+    	if (adapter == null) {
+    		//Bluetooth not supported on this device
+    	}
+    	
+    	if (!adapter.isEnabled()) {
+    	    Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+    	    startActivityForResult(enableBtIntent, 1);
+    	}
+    	
         Set<BluetoothDevice> setdevices = adapter.getBondedDevices();
         
         if(adapter.startDiscovery())
@@ -44,6 +54,19 @@ public class MainActivity extends ActionBarActivity {
         Iterator<BluetoothDevice> it = setdevices.iterator();
         while(it.hasNext()) 
         	text.append(setdevices.toString()+ "  " + it.next().getName() );
+    }
+    
+    @Override
+    protected void onStop() {
+    	super.onStop();
+    	
+    	
+    	//turn off the bluetooth if opened by the app
+    	
+    	BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
+    	if (adapter == null) {
+    		//Bluetooth not supported on this device
+    	}
     }
     
     protected void client() {
